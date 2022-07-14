@@ -1,7 +1,7 @@
 var count = 0;
 var selectedRow = -1;
 var selectedCol = -1;
-var invalid = false;
+var counter = 0;
 
 function clearBoard(){
   for(var i = 0; i < 9; i++){
@@ -46,8 +46,9 @@ function solve(){
     }
   }
   
-  invalid = false;
-  findSolution(0, 0, board, 0);
+  counter = 0;
+  findSolution(0, 0, board);
+  console.log(counter);
    
   for(var i = 0; i < 9; i++){
     for(var j = 0; j < 9; j++){
@@ -58,7 +59,7 @@ function solve(){
 
 
 function findSolution(row, col, board){
-  
+  counter++;
   while(row < 9 && board[row][col] != '.'){
     col++;
     if(col == 9){
@@ -88,6 +89,10 @@ function findSolution(row, col, board){
   }
   board[row][col] = '.';
   return false;
+}
+
+function throwException(){
+  throw "Invalid";
 }
 
 function isValid(row, col, board, c){
