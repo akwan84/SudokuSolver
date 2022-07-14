@@ -1,8 +1,7 @@
 var count = 0;
 var selectedRow = -1;
 var selectedCol = -1;
-var counter = 0;
-
+var answer = null;
 
 //nothing calling this function at the moment
 function generateBoard(){
@@ -56,6 +55,7 @@ function removeSquares(k, curBoard){
 
 
 function clearBoard(){
+  answer = null;
   for(var i = 0; i < 9; i++){
     for(var j = 0; j < 9; j++){
       document.getElementById(i + "" + j).innerHTML = " ";
@@ -83,6 +83,7 @@ function selectCell(row, col){
 
 
 function fillCell(val){
+  answer = null;
   if(selectedRow != -1 && selectedCol != -1){
     var id = "" + selectedRow + "" + selectedCol;
     document.getElementById(id).innerHTML = val + "";
@@ -90,8 +91,17 @@ function fillCell(val){
 }
 
 
+function clearCell(){
+  answer = null;
+  if(selectedRow != -1 && selectedCol != -1){
+    var id = "" + selectedRow + "" + selectedCol;
+    document.getElementById(id).innerHTML = " ";
+  }
+}
 
-function solve(){
+
+
+function solve(showAnswer){
   var board = [['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',]];
   for(var i = 0; i < 9; i++){
     for(var j = 0; j < 9; j++){
@@ -103,21 +113,33 @@ function solve(){
       }
     }
   }
-  
-  counter = 0;
-  findSolution(0, 0, board);
-  console.log(counter);
+
+  if(answer == null){
+    findSolution(0, 0, board);
+    answer = board;
+  }
    
-  for(var i = 0; i < 9; i++){
-    for(var j = 0; j < 9; j++){
-      document.getElementById(i+""+j).innerHTML = board[i][j];
+  if(showAnswer){
+    for(var i = 0; i < 9; i++){
+      for(var j = 0; j < 9; j++){
+        document.getElementById(i+""+j).innerHTML = answer[i][j];
+      }
+    }
+    if(selectedRow != -1 && selectedCol != -1){
+      document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
+    }
+    selectedRow = -1;
+    selectedCol = -1;
+  }else{
+    if(selectedRow != -1 && selectedCol != -1){
+      var id = "" + selectedRow + "" + selectedCol;
+      document.getElementById(id).innerHTML = answer[selectedRow][selectedCol];
     }
   }
 }
 
 
 function findSolution(row, col, board){
-  counter++;
   while(row < 9 && board[row][col] != '.'){
     col++;
     if(col == 9){
@@ -147,10 +169,6 @@ function findSolution(row, col, board){
   }
   board[row][col] = '.';
   return false;
-}
-
-function throwException(){
-  throw "Invalid";
 }
 
 function isValid(row, col, board, c){
