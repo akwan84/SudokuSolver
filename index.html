@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku Solver</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<body> 
+  <h1 style = "text-align:center;font-family:'Verdana';color:#031a3b"> Sudoku Solver</h1>
+  <div class = "board">
+    <button onclick = "selectCell(0, 0)" id = "00"> </button>
+    <button onclick = "selectCell(0, 1)" id = "01"> </button>
+    <button onclick = "selectCell(0, 2)" id = "02"> </button>
+    <button onclick = "selectCell(0, 3)" class = "otherCol" id = "03"> </button>
+    <button onclick = "selectCell(0, 4)" class = "otherCol" id = "04"> </button>
+    <button onclick = "selectCell(0, 5)" class = "otherCol" id = "05"> </button>
+    <button onclick = "selectCell(0, 6)" id = "06"> </button>
+    <button onclick = "selectCell(0, 7)" id = "07"> </button>
+    <button onclick = "selectCell(0, 8)" id = "08"> </button>
+    <button onclick = "selectCell(1, 0)" id = "10"> </button>
+    <button onclick = "selectCell(1, 1)" id = "11"> </button>
+    <button onclick = "selectCell(1, 2)" id = "12"> </button>
+    <button onclick = "selectCell(1, 3)" id = "13" class = "otherCol"> </button>
+    <button onclick = "selectCell(1, 4)" id = "14" class = "otherCol"> </button>
+    <button onclick = "selectCell(1, 5)" id = "15" class = "otherCol"> </button>
+    <button onclick = "selectCell(1, 6)" id = "16" > </button>
+    <button onclick = "selectCell(1, 7)" id = "17" > </button>
+    <button onclick = "selectCell(1, 8)" id = "18" > </button>
+    <button onclick = "selectCell(2, 0)" id = "20" > </button>
+    <button onclick = "selectCell(2, 1)" id = "21" > </button>
+    <button onclick = "selectCell(2, 2)" id = "22" > </button>
+    <button onclick = "selectCell(2, 3)" id = "23" class = "otherCol"> </button>
+    <button onclick = "selectCell(2, 4)" id = "24" class = "otherCol"> </button>
+    <button onclick = "selectCell(2, 5)" id = "25" class = "otherCol"> </button>
+    <button onclick = "selectCell(2, 6)" id = "26" > </button>
+    <button onclick = "selectCell(2, 7)" id = "27" > </button>
+    <button onclick = "selectCell(2, 8)" id = "28" > </button>
+    <button onclick = "selectCell(3, 0)" id = "30" class = "otherCol"> </button>
+    <button onclick = "selectCell(3, 1)" id = "31" class = "otherCol"> </button>
+    <button onclick = "selectCell(3, 2)" id = "32" class = "otherCol"> </button>
+    <button onclick = "selectCell(3, 3)" id = "33"> </button>
+    <button onclick = "selectCell(3, 4)" id = "34"> </button>
+    <button onclick = "selectCell(3, 5)" id = "35"> </button>
+    <button onclick = "selectCell(3, 6)" id = "36" class = "otherCol"> </button>
+    <button onclick = "selectCell(3, 7)" id = "37" class = "otherCol"> </button>
+    <button onclick = "selectCell(3, 8)" id = "38" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 0)" id = "40" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 1)" id = "41" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 2)" id = "42" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 3)" id = "43"> </button>
+    <button onclick = "selectCell(4, 4)" id = "44"> </button>
+    <button onclick = "selectCell(4, 5)" id = "45"> </button>
+    <button onclick = "selectCell(4, 6)" id = "46" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 7)" id = "47" class = "otherCol"> </button>
+    <button onclick = "selectCell(4, 8)" id = "48" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 0)" id = "50" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 1)" id = "51" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 2)" id = "52" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 3)" id = "53"> </button>
+    <button onclick = "selectCell(5, 4)" id = "54"> </button>
+    <button onclick = "selectCell(5, 5)" id = "55"> </button>
+    <button onclick = "selectCell(5, 6)" id = "56" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 7)" id = "57" class = "otherCol"> </button>
+    <button onclick = "selectCell(5, 8)" id = "58" class = "otherCol"> </button>
+    <button onclick = "selectCell(6, 0)" id = "60"> </button>
+    <button onclick = "selectCell(6, 1)" id = "61"> </button>
+    <button onclick = "selectCell(6, 2)" id = "62"> </button>
+    <button onclick = "selectCell(6, 3)" id = "63" class = "otherCol"> </button>
+    <button onclick = "selectCell(6, 4)" id = "64" class = "otherCol"> </button>
+    <button onclick = "selectCell(6, 5)" id = "65" class = "otherCol"> </button>
+    <button onclick = "selectCell(6, 6)" id = "66"> </button>
+    <button onclick = "selectCell(6, 7)" id = "67"> </button>
+    <button onclick = "selectCell(6, 8)" id = "68"> </button>
+    <button onclick = "selectCell(7, 0)" id = "70"> </button>
+    <button onclick = "selectCell(7, 1)" id = "71"> </button>
+    <button onclick = "selectCell(7, 2)" id = "72"> </button>
+    <button onclick = "selectCell(7, 3)" id = "73" class = "otherCol"> </button>
+    <button onclick = "selectCell(7, 4)" id = "74" class = "otherCol"> </button>
+    <button onclick = "selectCell(7, 5)" id = "75" class = "otherCol"> </button>
+    <button onclick = "selectCell(7, 6)" id = "76"> </button>
+    <button onclick = "selectCell(7, 7)" id = "77"> </button>
+    <button onclick = "selectCell(7, 8)" id = "78"> </button>
+    <button onclick = "selectCell(8, 0)" id = "80"> </button>
+    <button onclick = "selectCell(8, 1)" id = "81"> </button>
+    <button onclick = "selectCell(8, 2)" id = "82"> </button>
+    <button onclick = "selectCell(8, 3)" id = "83" class = "otherCol"> </button>
+    <button onclick = "selectCell(8, 4)" id = "84" class = "otherCol"> </button>
+    <button onclick = "selectCell(8, 5)" id = "85" class = "otherCol"> </button>
+    <button onclick = "selectCell(8, 6)" id = "86"> </button>
+    <button onclick = "selectCell(8, 7)" id = "87"> </button>
+    <button onclick = "selectCell(8, 8)" id = "88"> </button>
+  </div>
+  <div style = "height:20px;">
+
+  </div>
+  <div id = "control">
+    <button class = "selector" onclick = "fillCell(1)">1</button>
+    <button class = "selector" onclick = "fillCell(2)">2</button>
+    <button class = "selector" onclick = "fillCell(3)">3</button>
+    <button class = "selector" onclick = "fillCell(4)">4</button>
+    <button class = "selector" onclick = "fillCell(5)">5</button>
+    <button class = "selector" onclick = "fillCell(6)">6</button>
+    <button class = "selector" onclick = "fillCell(7)">7</button>
+    <button class = "selector" onclick = "fillCell(8)">8</button>
+    <button class = "selector" onclick = "fillCell(9)">9</button>
+  </div>
+  <div style = "height=20px;"></div>
+
+  <div style = "width:508px; margin:auto;">
+    <button style = "width:250px;" class = "selector" onclick = "solve()"> <strong>Solve</strong> </button>
+    <button style = "width:250px;" class = "selector" onclick = "clearBoard()"> <strong>Clear</strong> </button>
+  </div>
+</body>
+<!-- partial -->
+  <script  src="script.js"></script>
+
+</body>
+</html>
