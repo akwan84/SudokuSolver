@@ -4,7 +4,8 @@ var selectedCol = -1;
 var answer = null;
 
 //nothing calling this function at the moment
-function generateBoard(){
+function generateBoard(k){
+  answer = null;
   var square1 = generateSquare();
   var square2 = generateSquare();
   var square3 = generateSquare();
@@ -13,13 +14,23 @@ function generateBoard(){
   counter = 0;
   findSolution(0, 0, curBoard);
 
-  removeSquares(i, curBoard);
-  for(var k = 0; k < 9; k++){
-    console.log(curBoard[k]);
-  }
+  removeSquares(k, curBoard);
 
-  counter = 0;
-  findSolution(0, 0, curBoard);
+  for(var i = 0; i < 9; i++){
+    for(var j = 0; j < 9; j++){
+      if(curBoard[i][j] != '.'){
+        document.getElementById(i+""+j).innerHTML = curBoard[i][j];
+      }else{
+        document.getElementById(i+""+j).innerHTML = " ";
+      }
+    }
+  }
+  if(selectedRow != -1 && selectedCol != -1){
+    document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
+  }
+  selectedRow = -1;
+  selectedCol = -1;
+
 }
 
 

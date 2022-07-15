@@ -113,6 +113,18 @@
     <button style = "width:200px;" class = "selector" onclick = "clearBoard()"> <strong>Clear Board</strong> </button>
     <button style = "width:200px;" class = "selector" onclick = "clearCell()"> <strong>Clear Cell</strong> </button>
   </div>
+  <div style = "height:40px;"></div>
+
+
+  <h3 style = "text-align:center;font-family:'Verdana';color:#031a3b"> Generate Puzzle</h3>
+
+  <div style = "width:816px; margin:auto;">
+    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 25)"> <strong>Easy</strong> </button>
+    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 35)"> <strong>Medium</strong> </button>
+    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 45)"> <strong>Hard</strong> </button>
+    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 53)"> <strong>Expert</strong> </button>
+  </div>
+
 </body>
 <!-- partial -->
   <script  src="script.js"></script>
