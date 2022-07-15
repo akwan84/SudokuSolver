@@ -2,8 +2,11 @@ var count = 0;
 var selectedRow = -1;
 var selectedCol = -1;
 var answer = null;
+var interval;
 
-//nothing calling this function at the moment
+/*
+used to generate a random sudoku board
+*/
 function generateBoard(k){
   answer = null;
   var square1 = generateSquare();
@@ -16,15 +19,11 @@ function generateBoard(k){
 
   removeSquares(k, curBoard);
 
-  for(var i = 0; i < 9; i++){
-    for(var j = 0; j < 9; j++){
-      if(curBoard[i][j] != '.'){
-        document.getElementById(i+""+j).innerHTML = curBoard[i][j];
-      }else{
-        document.getElementById(i+""+j).innerHTML = " ";
-      }
-    }
-  }
+  boardToReveal = curBoard;
+  cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  interval = setInterval(revealBoard, 40);
+
   if(selectedRow != -1 && selectedCol != -1){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
   }
@@ -34,7 +33,9 @@ function generateBoard(k){
 }
 
 
-
+/*
+helper method for generateBoard, used to generate 1 square in the board
+*/
 function generateSquare(){
   var square = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   for(var i = 0; i < 100; i++){
@@ -49,7 +50,9 @@ function generateSquare(){
 }
 
 
-
+/*
+helper method for generateBoard, used to remove k random numbers from curBoard
+*/
 function removeSquares(k, curBoard){
   var numRemoved = 0;
   while(numRemoved < k){
@@ -64,7 +67,9 @@ function removeSquares(k, curBoard){
 }
 
 
-
+/*
+method to clear all the values in the board
+*/
 function clearBoard(){
   answer = null;
   for(var i = 0; i < 9; i++){
@@ -81,6 +86,9 @@ function clearBoard(){
 
 
 
+/*
+selects the clicked cell, changing the colour and setting selectedRow and selectedCol
+*/
 function selectCell(row, col){
   if(selectedRow != -1 && selectedCol != -1){
    document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
@@ -93,6 +101,9 @@ function selectCell(row, col){
 
 
 
+/*
+fills the selected cell with val
+*/
 function fillCell(val){
   answer = null;
   if(selectedRow != -1 && selectedCol != -1){
@@ -102,6 +113,9 @@ function fillCell(val){
 }
 
 
+/*
+clears the value in a the selected cell
+*/
 function clearCell(){
   answer = null;
   if(selectedRow != -1 && selectedCol != -1){
@@ -111,7 +125,9 @@ function clearCell(){
 }
 
 
-
+/*
+used to get the solution to the sudoku puzzle, called in the HTML file
+*/
 function solve(showAnswer){
   var board = [['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',],['.','.','.','.','.','.','.','.','.',]];
   for(var i = 0; i < 9; i++){
@@ -131,11 +147,10 @@ function solve(showAnswer){
   }
    
   if(showAnswer){
-    for(var i = 0; i < 9; i++){
-      for(var j = 0; j < 9; j++){
-        document.getElementById(i+""+j).innerHTML = answer[i][j];
-      }
-    }
+    cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    boardToReveal = answer;
+    interval = setInterval(revealBoard, 40);
+    
     if(selectedRow != -1 && selectedCol != -1){
       document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
     }
@@ -150,6 +165,44 @@ function solve(showAnswer){
 }
 
 
+/*
+used to reveal the board boardToReveal in a cascading manner
+*/
+var boardToReveal;
+var cascadeIndex;
+function revealBoard(){
+  var index = 0;
+  while(index < 9 && cascadeIndex[index] != 0){
+    if(cascadeIndex[index] != 9){
+      if(boardToReveal[index][cascadeIndex[index]] != '.'){
+        document.getElementById(index + "" + cascadeIndex[index]).innerHTML = boardToReveal[index][cascadeIndex[index]];
+      }else{
+        document.getElementById(index + "" + cascadeIndex[index]).innerHTML = " ";
+      }
+      cascadeIndex[index]++;
+    }
+    index++;
+  }
+
+  if(index < 9){
+    if(boardToReveal[index][cascadeIndex[index]] != '.'){
+      document.getElementById(index + "" + cascadeIndex[index]).innerHTML = boardToReveal[index][cascadeIndex[index]];
+    }else{
+      document.getElementById(index + "" + cascadeIndex[index]).innerHTML = " ";
+    }
+    cascadeIndex[index]++;
+  }
+
+  if(cascadeIndex[8] == 9){
+    clearInterval(interval);
+  }
+}
+
+
+
+/*
+Using backtracking to find the solution to the board given
+*/
 function findSolution(row, col, board){
   while(row < 9 && board[row][col] != '.'){
     col++;
@@ -182,6 +235,10 @@ function findSolution(row, col, board){
   return false;
 }
 
+
+/*
+helper method to check whehter placing c at cell [row][col] is valid
+*/
 function isValid(row, col, board, c){
   for(var i = 0; i < 9; i++){
     if(board[row][i] == c){
