@@ -4,6 +4,9 @@ var selectedCol = -1;
 var answer = null;
 var interval;
 
+var themeNum = 0;
+var selectColour = ["#accbfa", " #c97171"];
+
 /*
 used to generate a random sudoku board
 */
@@ -95,7 +98,7 @@ function selectCell(row, col){
   }
   selectedRow = row;
   selectedCol = col;
-  document.getElementById(row + "" + col).style.backgroundColor = "#accbfa";
+  document.getElementById(row + "" + col).style.backgroundColor = selectColour[themeNum];
   console.log(row + " " + col);
 }
 
@@ -259,6 +262,12 @@ function isValid(row, col, board, c){
 
 
 
-function changeTheme(){
-  document.getElementById("theme").setAttribute("href", "theme2.css");
+function changeTheme(k){
+  if(k == 0){
+    themeNum = 0;
+    document.getElementById("theme").setAttribute("href", "theme1.css");
+  }else if(k == 1){
+    themeNum = 1;
+    document.getElementById("theme").setAttribute("href", "theme2.css");
+  }
 }

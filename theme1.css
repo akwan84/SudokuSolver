@@ -44,3 +44,10 @@ div.board{
   font-family:'Verdana';
   color:#031a3b;
 }
+
+.sideMenu{
+  width:25%; 
+  float:left; 
+  height: 100vh;
+  background-color:#dce8fa;
+}

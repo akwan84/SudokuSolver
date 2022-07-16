@@ -5,9 +5,10 @@
   <title>Sudoku Solver</title>
   <link id = "theme" rel="stylesheet" href="theme1.css">
 </head>
-<div style = "width:25%; float:left; height: 100vh;background-color:#dce8fa">
+<div class = "sideMenu">
   <h2 class = "heading"> Settings </h2>
-  <button onclick = "changeTheme()">Change Theme</button>
+  <button onclick = "changeTheme(0)" style = "width:90%;margin-left:5%" class = "selector">Theme 1</button>
+  <button onclick = "changeTheme(1)" style = "width:90%;margin-left:5%" class = "selector">Theme 2</button>
 </div>
 <div style = "width:50%;float:left;">
 <body>
@@ -122,7 +123,7 @@
   <div style = "height:5px;"></div>
 
 
-  <h3 style = "text-align:center;font-family:'Verdana';color:#031a3b"> Generate Puzzle</h3>
+  <h3 class = "heading"> Generate Puzzle</h3>
 
   <div class = "control">
     <button style = "width:24%;margin-left:1.25%" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 25)"> <strong>Easy</strong> </button>
@@ -138,7 +139,7 @@
 </body>
 </div>
 
-<div style = "width:25%; float:left; height: 100vh;background-color:#dce8fa">
+<div class = "sideMenu">
   <h2 class = "heading">App Info</h2>
 </div>
 </html>

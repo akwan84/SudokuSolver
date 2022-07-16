@@ -4,18 +4,18 @@ button{
   border:1px solid;
   float:left;
   height:40px;
-  background-color:#515151;
+  background-color:#b50202;
   font-family:"Verdana";
   font-weight:bold;
-  color:#031a3b;
+  color:#400101;
   border-radius:2px;
 }
 
 button.otherCol{
-  background-color:#ffffff;
+  background-color:#d9d9d9;
 }
 button:hover{
-  background-color:#accbfa;
+  background-color:#c97171;
 }
 
 div.board{
@@ -36,11 +36,18 @@ div.board{
   font-weight:bold;
   border-radius:5px;
   margin:0.25%;
-  background-color: #dae0e8;
+  background-color: #c2b2b2;
 }
 
 .heading{
   text-align:center;
   font-family:'Verdana';
-  color:#031a3b;
+  color:#400101;
+}
+
+.sideMenu{
+  width:25%; 
+  float:left; 
+  height: 100vh;
+  background-color:#b50202;
 }
