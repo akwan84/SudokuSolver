@@ -72,11 +72,11 @@ method to clear all the values in the board
 */
 function clearBoard(){
   answer = null;
-  for(var i = 0; i < 9; i++){
-    for(var j = 0; j < 9; j++){
-      document.getElementById(i + "" + j).innerHTML = " ";
-    }
-  }
+  boardToReveal = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
+  cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+  
+  interval = setInterval(revealBoard, 40);
+  
   if(selectedRow != -1 && selectedCol != -1){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
     selectedRow = -1;
