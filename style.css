@@ -38,3 +38,9 @@ div.board{
   margin:2px;
   background-color: #dae0e8;
 }
+
+.heading{
+  text-align:center;
+  font-family:'Verdana';
+  color:#031a3b;
+}
