@@ -5,7 +5,7 @@
   <title>Sudoku Solver</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<div style = "width:25%; float:left; height: 100vh;background-color:#EBEBEB">
+<div style = "width:25%; float:left; height: 100vh;background-color:#dce8fa">
   <h2 class = "heading"> Settings </h2>
 </div>
 <div style = "width:50%;float:left;">
@@ -98,35 +98,36 @@
   <div style = "height:20px;">
 
   </div>
-  <div id = "control">
-    <button class = "selector" onclick = "fillCell(1)">1</button>
-    <button class = "selector" onclick = "fillCell(2)">2</button>
-    <button class = "selector" onclick = "fillCell(3)">3</button>
-    <button class = "selector" onclick = "fillCell(4)">4</button>
-    <button class = "selector" onclick = "fillCell(5)">5</button>
-    <button class = "selector" onclick = "fillCell(6)">6</button>
-    <button class = "selector" onclick = "fillCell(7)">7</button>
-    <button class = "selector" onclick = "fillCell(8)">8</button>
-    <button class = "selector" onclick = "fillCell(9)">9</button>
+  <div class = "control">
+    <button style = "width:10%; margin-left:3%;" class = "selector" onclick = "fillCell(1)">1</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(2)">2</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(3)">3</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(4)">4</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(5)">5</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(6)">6</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(7)">7</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(8)">8</button>
+    <button style = "width:10%;" class = "selector" onclick = "fillCell(9)">9</button>
   </div>
   <div style = "height:20px;"></div>
 
-  <div style = "width:816px; margin:auto;">
-    <button style = "width:200px;" class = "selector" onclick = "solve(true)"> <strong>Solve</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "solve(false)"> <strong>Solve Cell</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "clearBoard()"> <strong>Clear Board</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "clearCell()"> <strong>Clear Cell</strong> </button>
+
+  <div class = "control">
+    <button style = "width:24%; margin-left:1.25%" class = "selector" onclick = "solve(true)"> <strong>Solve</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "solve(false)"> <strong>Solve Cell</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "clearBoard()"> <strong>Clear Board</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "clearCell()"> <strong>Clear Cell</strong> </button>
   </div>
-  <div style = "height:40px;"></div>
+  <div style = "height:5px;"></div>
 
 
   <h3 style = "text-align:center;font-family:'Verdana';color:#031a3b"> Generate Puzzle</h3>
 
-  <div style = "width:816px; margin:auto;">
-    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 25)"> <strong>Easy</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 35)"> <strong>Medium</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 45)"> <strong>Hard</strong> </button>
-    <button style = "width:200px;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 53)"> <strong>Expert</strong> </button>
+  <div class = "control">
+    <button style = "width:24%;margin-left:1.25%" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 25)"> <strong>Easy</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 35)"> <strong>Medium</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 45)"> <strong>Hard</strong> </button>
+    <button style = "width:24%;" class = "selector" onclick = "generateBoard(Math.floor(Math.random() * 5) + 53)"> <strong>Expert</strong> </button>
   </div>
 
 </body>
@@ -136,7 +137,7 @@
 </body>
 </div>
 
-<div style = "width:25%; float:left; height: 100vh;background-color:#EBEBEB">
+<div style = "width:25%; float:left; height: 100vh;background-color:#dce8fa">
   <h2 class = "heading">App Info</h2>
 </div>
 </html>
