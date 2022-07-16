@@ -1,0 +1,46 @@
+button{
+  margin:0px;
+  width:40px;
+  border:1px solid;
+  float:left;
+  height:40px;
+  background-color:#dce8fa;
+  font-family:"Verdana";
+  font-weight:bold;
+  color:#031a3b;
+  border-radius:2px;
+}
+
+button.otherCol{
+  background-color:#ffffff;
+}
+button:hover{
+  background-color:#accbfa;
+}
+
+div.board{
+  width:360px;
+  height:360px;
+  margin:auto;
+}
+
+.control{
+  width:100%;
+  height:50px;
+  margin: auto;
+}
+
+.selector{
+  width:90px;
+  height:40px;
+  font-weight:bold;
+  border-radius:5px;
+  margin:0.25%;
+  background-color: #dae0e8;
+}
+
+.heading{
+  text-align:center;
+  font-family:'Verdana';
+  color:#031a3b;
+}

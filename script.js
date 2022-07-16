@@ -256,3 +256,9 @@ function isValid(row, col, board, c){
   }
   return true;
 }
+
+
+
+function changeTheme(){
+  document.getElementById("theme").setAttribute("href", "theme2.css");
+}
