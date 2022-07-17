@@ -6,6 +6,7 @@ var interval;
 
 var themeNum = 0;
 var selectColour = ["#accbfa", " #c97171"];
+var revealType = 1;
 
 /*
 used to generate a random sudoku board
@@ -17,11 +18,13 @@ function generateBoard(k){
   var square3 = generateSquare();
   
   var curBoard = [[square1[0],square1[1],square1[2],'.','.','.','.','.','.'], [square1[3],square1[4],square1[5],'.','.','.','.','.','.'], [square1[6],square1[7],square1[8],'.','.','.','.','.','.'], ['.','.','.',square2[0],square2[1],square2[2],'.','.','.'], ['.','.','.',square2[3],square2[4],square2[5],'.','.','.'], ['.','.','.',square2[6],square2[7],square2[8],'.','.','.'], ['.','.','.','.','.','.',square3[0],square3[1],square3[2]], ['.','.','.','.','.','.',square3[3],square3[4],square3[5]], ['.','.','.','.','.','.',square3[6],square3[7],square3[8]]];
-  counter = 0;
   findSolution(0, 0, curBoard);
 
   removeSquares(k, curBoard);
 
+
+  performReveal(curBoard);
+  /*
   boardToReveal = curBoard;
   cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
@@ -31,7 +34,7 @@ function generateBoard(k){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
   }
   selectedRow = -1;
-  selectedCol = -1;
+  selectedCol = -1;*/
 
 }
 
@@ -75,6 +78,10 @@ method to clear all the values in the board
 */
 function clearBoard(){
   answer = null;
+  board = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
+  performReveal(board);
+
+  /*
   boardToReveal = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
   cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   
@@ -84,7 +91,7 @@ function clearBoard(){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
     selectedRow = -1;
     selectedCol = -1;
-  }
+  }*/
 }
 
 
@@ -150,6 +157,8 @@ function solve(showAnswer){
   }
    
   if(showAnswer){
+    performReveal(answer);
+    /*
     cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     boardToReveal = answer;
     interval = setInterval(cascadeReveal, 40);
@@ -158,13 +167,29 @@ function solve(showAnswer){
       document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
     }
     selectedRow = -1;
-    selectedCol = -1;
+    selectedCol = -1;*/
   }else{
     if(selectedRow != -1 && selectedCol != -1){
       var id = "" + selectedRow + "" + selectedCol;
       document.getElementById(id).innerHTML = answer[selectedRow][selectedCol];
     }
   }
+}
+
+function performReveal(board){
+  boardToReveal = board;
+  if(revealType == 0){
+    cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    interval = setInterval(cascadeReveal, 40);
+  }else if(revealType == 1){
+    verticalWipeIndex = 0;
+    interval = setInterval(verticalWipe, 40);
+  }
+  if(selectedRow != -1 && selectedCol != -1){
+    document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
+  }
+  selectedRow = -1;
+  selectedCol = -1;
 }
 
 
@@ -201,7 +226,20 @@ function cascadeReveal(){
   }
 }
 
-
+var verticalWipeIndex;
+function verticalWipe(){
+  for(var i = 0; i < 9; i++){
+    if(boardToReveal[verticalWipeIndex][i] == '.'){
+      document.getElementById(verticalWipeIndex + "" + i).innerHTML = " ";
+    }else{
+      document.getElementById(verticalWipeIndex + "" + i).innerHTML = boardToReveal[verticalWipeIndex][i];
+    }
+  }
+  verticalWipeIndex++;
+  if(verticalWipeIndex == 9){
+    clearInterval(interval);
+  }
+}
 
 /*
 Using backtracking to find the solution to the board given
