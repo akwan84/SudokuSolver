@@ -25,7 +25,7 @@ function generateBoard(k){
   boardToReveal = curBoard;
   cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  interval = setInterval(revealBoard, 40);
+  interval = setInterval(cascadeReveal, 40);
 
   if(selectedRow != -1 && selectedCol != -1){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
@@ -78,7 +78,7 @@ function clearBoard(){
   boardToReveal = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
   cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   
-  interval = setInterval(revealBoard, 40);
+  interval = setInterval(cascadeReveal, 40);
   
   if(selectedRow != -1 && selectedCol != -1){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
@@ -152,7 +152,7 @@ function solve(showAnswer){
   if(showAnswer){
     cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     boardToReveal = answer;
-    interval = setInterval(revealBoard, 40);
+    interval = setInterval(cascadeReveal, 40);
     
     if(selectedRow != -1 && selectedCol != -1){
       document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
@@ -173,7 +173,7 @@ used to reveal the board boardToReveal in a cascading manner
 */
 var boardToReveal;
 var cascadeIndex;
-function revealBoard(){
+function cascadeReveal(){
   var index = 0;
   while(index < 9 && cascadeIndex[index] != 0){
     if(cascadeIndex[index] != 9){
