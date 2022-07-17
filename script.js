@@ -5,8 +5,8 @@ var answer = null;
 var interval;
 
 var themeNum = 0;
-var selectColour = ["#accbfa", " #c97171"];
-var revealType = 1;
+var selectColour = ["#accbfa", "#c97171"];
+var revealType = 0;
 
 /*
 used to generate a random sudoku board
@@ -24,18 +24,6 @@ function generateBoard(k){
 
 
   performReveal(curBoard);
-  /*
-  boardToReveal = curBoard;
-  cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-  interval = setInterval(cascadeReveal, 40);
-
-  if(selectedRow != -1 && selectedCol != -1){
-    document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
-  }
-  selectedRow = -1;
-  selectedCol = -1;*/
-
 }
 
 
@@ -80,18 +68,6 @@ function clearBoard(){
   answer = null;
   board = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
   performReveal(board);
-
-  /*
-  boardToReveal = [[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],[' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']];
-  cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-  
-  interval = setInterval(cascadeReveal, 40);
-  
-  if(selectedRow != -1 && selectedCol != -1){
-    document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
-    selectedRow = -1;
-    selectedCol = -1;
-  }*/
 }
 
 
@@ -158,16 +134,6 @@ function solve(showAnswer){
    
   if(showAnswer){
     performReveal(answer);
-    /*
-    cascadeIndex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    boardToReveal = answer;
-    interval = setInterval(cascadeReveal, 40);
-    
-    if(selectedRow != -1 && selectedCol != -1){
-      document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
-    }
-    selectedRow = -1;
-    selectedCol = -1;*/
   }else{
     if(selectedRow != -1 && selectedCol != -1){
       var id = "" + selectedRow + "" + selectedCol;
@@ -300,7 +266,8 @@ function isValid(row, col, board, c){
 
 
 
-function changeTheme(k){
+function changeTheme(k, id){
+  document.getElementById("theme"+themeNum).style.borderColor = "";
   if(k == 0){
     themeNum = 0;
     document.getElementById("theme").setAttribute("href", "theme1.css");
@@ -308,4 +275,11 @@ function changeTheme(k){
     themeNum = 1;
     document.getElementById("theme").setAttribute("href", "theme2.css");
   }
+  document.getElementById(id).style.borderColor = "#ffffff";
+}
+
+function changeReveal(k, id){
+  document.getElementById("reveal" + revealType).style.borderColor = "";
+  revealType = k;
+  document.getElementById(id).style.borderColor = "#ffffff";
 }

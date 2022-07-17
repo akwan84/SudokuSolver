@@ -50,4 +50,5 @@ div.board{
   float:left; 
   height: 100vh;
   background-color:#b50202;
+  border-radius: 15px;
 }

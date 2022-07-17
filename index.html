@@ -7,8 +7,13 @@
 </head>
 <div class = "sideMenu">
   <h2 class = "heading"> Settings </h2>
-  <button onclick = "changeTheme(0)" style = "width:90%;margin-left:5%" class = "selector">Theme 1</button>
-  <button onclick = "changeTheme(1)" style = "width:90%;margin-left:5%" class = "selector">Theme 2</button>
+  <h4 class = "heading" style = "margin-bottom:0px"> Colour Theme</h4>
+  <button id = "theme0" onclick = "changeTheme(0, 'theme0')" style = "width:90%;margin-left:5%;border-color:#ffffff" class = "selector">Theme 1</button>
+  <button id = "theme1" onclick = "changeTheme(1, 'theme1')" style = "width:90%;margin-left:5%; margin-bottom:20px" class = "selector">Theme 2</button>
+
+  <h4 class = "heading" style = "margin-bottom:0px"> Reveal Type</h4>
+  <button id = "reveal0" onclick = "changeReveal(0, 'reveal0')" style = "width:90%;margin-left:5%;border-color:#ffffff" class = "selector">Cascade</button>
+  <button id = "reveal1" onclick = "changeReveal(1, 'reveal1')" style = "width:90%;margin-left:5%" class = "selector">Vertical Wipe</button>
 </div>
 <div style = "width:50%;float:left;">
 <body>
