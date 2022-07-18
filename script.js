@@ -283,3 +283,12 @@ function changeReveal(k, id){
   revealType = k;
   document.getElementById(id).style.borderColor = "#ffffff";
 }
+
+function menuVis(id){
+  var state = document.getElementById(id).style.visibility;
+  if(state == 'visible'){
+    document.getElementById(id).style.visibility = 'hidden';
+  }else{
+    document.getElementById(id).style.visibility = 'visible';
+  }
+}

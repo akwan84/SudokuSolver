@@ -51,4 +51,5 @@ div.board{
   height: 100vh;
   background-color:#dce8fa;
   border-radius: 15px;
+  visibility: hidden;
 }
