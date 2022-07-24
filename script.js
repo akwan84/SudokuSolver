@@ -3,7 +3,7 @@ var selectedRow = -1;
 var selectedCol = -1;
 var answer = null;
 var interval;
-
+//test
 var themeNum = 0;
 var selectColour = ["#accbfa", "#c97171"];
 var revealType = 0;
