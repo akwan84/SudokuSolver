@@ -127,7 +127,7 @@ function solve(showAnswer){
     }
   }
 
-  if(!checkValid(board)){
+  if(!isValidBoard(board)){
     alert("Invalid Board");
     return;
   }
@@ -146,6 +146,50 @@ function solve(showAnswer){
     }
   }
 }
+
+
+function isValidBoard(board){
+  //check rows
+  for(let i = 0; i < 9; i++){
+    let set = new Set();
+    for(let j = 0; j < 9; j++){
+      if(board[i][j] != '.'){
+        if(set.has(board[i][j])) return false;
+        set.add(board[i][j]);
+      }
+    }
+  }
+
+  //check columns
+  for(let i = 0; i < 9; i++){
+    let set = new Set();
+    for(let j = 0; j < 9; j++){
+      if(board[i][j] != '.'){
+        if(set.has(board[j][i])) return false;
+        set.add(board[j][i]);
+      }
+    }
+  }
+
+  //check boxes
+  for(let i = 0; i < 9; i += 3){
+    for(let j = 0; j < 9; j += 3){
+      //top left corner of the box at [i][j]
+      let set = new Set();
+      for(let m = i; m < i+3; m++){
+        for(let n = j; n < j+3; n++){
+          if(board[m][n] != '.'){
+            if(set.has(board[m][n])) return false;
+            set.add(board[m][n]);
+          }
+        }
+      }
+    }
+  }
+
+  return true;
+}
+
 
 function performReveal(board){
   boardToReveal = board;
