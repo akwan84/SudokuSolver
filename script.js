@@ -164,7 +164,7 @@ function isValidBoard(board){
   for(let i = 0; i < 9; i++){
     let set = new Set();
     for(let j = 0; j < 9; j++){
-      if(board[i][j] != '.'){
+      if(board[j][i] != '.'){
         if(set.has(board[j][i])) return false;
         set.add(board[j][i]);
       }
