@@ -82,7 +82,7 @@ function selectCell(row, col){
   selectedRow = row;
   selectedCol = col;
   document.getElementById(row + "" + col).style.backgroundColor = selectColour[themeNum];
-  console.log(row + " " + col);
+  //console.log(row + " " + col);
 }
 
 
@@ -292,3 +292,65 @@ function menuVis(id){
     document.getElementById(id).style.visibility = 'visible';
   }
 }
+
+function moveSelection(dir){
+  if(selectedRow == -1 && selectedCol == -1){
+    selectCell(0, 0);
+  }else if(dir == "UP" && selectedRow != 0){
+    selectCell(selectedRow - 1, selectedCol);
+  }else if(dir == "DOWN" && selectedRow != 8){
+    selectCell(selectedRow + 1, selectedCol);
+  }else if(dir == "LEFT" && selectedCol != 0){
+    selectCell(selectedRow, selectedCol - 1);
+  }else if(dir == "RIGHT" && selectedCol != 8){
+    selectCell(selectedRow, selectedCol + 1);
+  }
+}
+
+
+document.addEventListener('keydown', function(e) {
+  switch (e.keyCode) {
+    case 37:
+      moveSelection("LEFT");
+      break;
+    case 38:
+      moveSelection("UP");
+      break;
+    case 39:
+      moveSelection("RIGHT");
+      break;
+    case 40:
+      moveSelection("DOWN");
+      break;
+    case 48:
+      clearCell();
+      break;
+    case 49:
+      fillCell(1);
+      break;
+    case 50:
+      fillCell(2);
+      break;
+    case 51:
+      fillCell(3);
+      break;
+    case 52:
+      fillCell(4);
+      break;
+    case 53:
+      fillCell(5);
+      break;
+    case 54:
+      fillCell(6);
+      break;
+    case 55:
+      fillCell(7);
+      break;
+    case 56:
+      fillCell(8);
+      break;
+    case 57:
+      fillCell(9);
+      break;
+  }
+});
