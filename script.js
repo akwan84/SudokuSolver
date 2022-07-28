@@ -390,9 +390,6 @@ document.addEventListener('keydown', function(e) {
     case 40:
       moveSelection("DOWN");
       break;
-    case 48:
-      clearCell();
-      break;
     case 49:
       fillCell(1);
       break;
@@ -419,6 +416,18 @@ document.addEventListener('keydown', function(e) {
       break;
     case 57:
       fillCell(9);
+      break;
+    case 69:
+      clearBoard();
+      break;
+    case 81:
+      solve(true);
+      break;
+    case 82:
+      clearCell();
+      break;
+    case 87:
+      solve(false);
       break;
   }
 });

@@ -53,3 +53,8 @@ div.board{
   border-radius: 15px;
   visibility: hidden;
 }
+
+ul{
+  font-family:"Verdana";
+  color:#031a3b;
+}

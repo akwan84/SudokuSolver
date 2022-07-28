@@ -22,7 +22,7 @@
 <body> 
   <div style = "width:100%; float:left">
     <button class = "selector" style = "width:10%;margin:0%;margin-left:1.25%" onclick = "menuVis('settingsMenu')">Settings</button>
-    <button class = "selector" style = "width:10%;margin:0%;margin-right:1.25%; margin-left:77.5%" onclick = "menuVis('infoMenu')" > App Info</button>
+    <button class = "selector" style = "width:10%;margin:0%;margin-right:1.25%; margin-left:77.5%" onclick = "menuVis('infoMenu')" >Help</button>
   </div>
   <h1 class = "heading"> Sudoku Solver</h1>
   <div class = "board">
@@ -145,12 +145,20 @@
 
 </body>
 <!-- partial -->
-  <script  src="script.js"></script>
+  <script src="script.js"></script>
 
 </body>
 </div>
 
 <div class = "sideMenu" id = "infoMenu">
-  <h2 class = "heading">App Info</h2>
+  <h2 class = "heading">Keybinds</h2>
+  <ul>
+    <li> Use the arrow keys to move the selector around the board</li>
+    <li> Use the 1-9 keys to put numbers into cells </li>
+    <li> Use Q to solve the puzzle </li>
+    <li> Use W to solve a particular cell in the puzzle</li>
+    <li> Use E to clear the board </li>
+    <li> Use R to clear a particular cell </li>
+  </ul>
 </div>
 </html>
