@@ -199,6 +199,9 @@ function performReveal(board){
   }else if(revealType == 1){
     verticalWipeIndex = 0;
     interval = setInterval(verticalWipe, 40);
+  }else if(revealType == 2){
+    horizontalWipeIndex = 0;
+    interval = setInterval(horizontalWipe, 40);
   }
   if(selectedRow != -1 && selectedCol != -1){
     document.getElementById(selectedRow + "" + selectedCol).style.backgroundColor = "";
@@ -252,6 +255,22 @@ function verticalWipe(){
   }
   verticalWipeIndex++;
   if(verticalWipeIndex == 9){
+    clearInterval(interval);
+  }
+}
+
+var horizontalWipeIndex;
+function horizontalWipe(){
+  for(let i = 0; i < 9; i++){
+    if(boardToReveal[i][horizontalWipeIndex] == '.'){
+      document.getElementById(i + "" + horizontalWipeIndex).innerHTML = " ";
+    }else{
+      document.getElementById(i + "" + horizontalWipeIndex).innerHTML = boardToReveal[i][horizontalWipeIndex];
+    }
+  }
+
+  horizontalWipeIndex++;
+  if(horizontalWipeIndex == 9){
     clearInterval(interval);
   }
 }
