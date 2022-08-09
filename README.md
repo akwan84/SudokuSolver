@@ -12,4 +12,4 @@ The solution is found using a backtracking technique, which is essentially guess
 What this means is that there are up to $9^{81}$ possible sudoku boards if all the cells were empty. But luckily, this many empty cells usually means there are many solutions, so finding a solution shouldn't take too long. But worst case scenario, with 65 empty cells and an unique solution, there are up to $9^{65}$, or about $10^{61}$, the solution may take a very long time to find. <br><br>
 
 ## Shortcomings
-The main shortcoming of this program is that some invalid sudoku boards may not be visible with the clues given.
+The main shortcoming of this program is that some invalid sudoku boards may not be visible with the clues given. For example (add image here):
