@@ -417,17 +417,8 @@ document.addEventListener('keydown', function(e) {
     case 57:
       fillCell(9);
       break;
-    case 69:
-      clearBoard();
-      break;
-    case 81:
-      solve(true);
-      break;
-    case 82:
+    case 8:
       clearCell();
-      break;
-    case 87:
-      solve(false);
       break;
   }
 });
