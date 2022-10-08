@@ -9,7 +9,7 @@ Fun Fact: There does not exist a sudoku board with less than 16 filled cells tha
 
 ## How it Works
 The solution is found using a backtracking technique, which is essentially guess-and-check. I wrote this program after solving the same question on Leetcode found <a href = "https://leetcode.com/problems/sudoku-solver/"> here </a>. The idea is that we go from top to bottom, left to right. Then for each empty cell, we try each number between 1 to 9. If a particular number can be validly put at this cell, we keep the number there, and try to find a number to fill in for all the other cells, if we can't do so, we try a different number at this cell. <br><br>
-What this means is that there are up to $9^{81}$ possible sudoku boards if all the cells were empty. But luckily, this many empty cells usually means there are many solutions, so finding a solution shouldn't take too long. But worst case scenario, with 65 empty cells and an unique solution, there are up to $9^{65}$, or about $10^{61}$, the solution may take a very long time to find. <br><br>
+What this means is that there are up to $9^{81}$ possible sudoku boards if all the cells were empty. But luckily, this many empty cells usually means there are many solutions, so finding a solution shouldn't take too long. But worst case scenario, where we have 65 empty cells and an unique solution, there are up to $9^{65}$, or about $10^{61}$ possible board permutations, which means the solution may take a very long time to find. <br><br>
 
 ## Shortcomings
-The main shortcoming of this program is that some invalid sudoku boards may not be visible with the clues given. For example (add image here):
+The main shortcoming of this program is that some invalid sudoku boards may not be visible with the clues given. In these cases, my program will continue to try searching for a solution it is never going to find. 
